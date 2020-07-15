@@ -32,7 +32,7 @@ public class Validator {
 	public static boolean viewValidator(List<Appliance> list) {
 		boolean result = true;
 
-		if (list.size() == 0) {
+		if ( list == null || list.size() == 0) {
 			result = false;
 		}
 		return result;

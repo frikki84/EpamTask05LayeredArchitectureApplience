@@ -5,25 +5,33 @@ import java.util.List;
 import java.util.Map;
 
 import by.epamtc.jwdmay2020.dziadkouskaya.task05.entity.Appliance;
+import by.epamtc.jwdmay2020.dziadkouskaya.task05.entity.Laptop;
 import by.epamtc.jwdmay2020.dziadkouskaya.task05.entity.criteria.SearchCriteria;
-import by.epamtc.jwdmay2020.dziadkouskaya.task05.entity.criteria.SearchCriteria.Laptop;
+
 
 public class LaptopCommand implements ApplienceCommand {
 
 	public Appliance createApplience(String[] features) {
 
 		String productName = features[0];
+		
+		double powerCapacity = Double.valueOf(features[2]);
 
-		ApplienceFactory factory = ApplienceFactory.getInstance();
-		Appliance appliance = factory.getLaptop();
+		String os = features[4];
 
-		appliance.setApplienceName(features[0]);
+		int memoryRom = Integer.valueOf(features[6]);
 
+		int systemMemory = Integer.valueOf(features[8]);
 
-		for (int i = 1; i < features.length; i += 2) {
-			appliance.getFeatureMap().put(features[i], features[i + 1]);
+		double cpu = Double.valueOf(features[10]);
 
-		}
+		int displayInch = Integer.valueOf(features[12]);
+
+		Laptop laptop = new Laptop(powerCapacity, os, memoryRom, systemMemory, cpu, displayInch);
+	
+	
+		Appliance appliance = laptop;
+
 
 		return appliance;
 	}

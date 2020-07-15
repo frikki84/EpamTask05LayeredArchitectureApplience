@@ -1,23 +1,30 @@
 package by.epamtc.jwdmay2020.dziadkouskaya.task05.dao.factory;
 
 import by.epamtc.jwdmay2020.dziadkouskaya.task05.entity.Appliance;
+import by.epamtc.jwdmay2020.dziadkouskaya.task05.entity.Laptop;
+import by.epamtc.jwdmay2020.dziadkouskaya.task05.entity.Refrigerator;
 
 public class RefrigeratorCommand implements ApplienceCommand {
 
 	public Appliance createApplience(String[] features) {
 
 		String productName = features[0];
+		int powerConsumption = Integer.parseInt(features[2]);
 
-		ApplienceFactory factory = ApplienceFactory.getInstance();
-		Appliance appliance = factory.getRefrigerator();
+		int weight = Integer.parseInt(features[4]);
 
-		appliance.setApplienceName(features[0]);
+		int freezerCapacity = Integer.parseInt(features[6]);
 
+		int overalCapacity = Integer.parseInt(features[8]);
 
-		for (int i = 1; i < features.length; i += 2) {
-			appliance.getFeatureMap().put(features[i], features[i + 1]);
+		int height = Integer.parseInt(features[10]);
 
-		}
+		int width = Integer.parseInt(features[12]);
+		
+		Refrigerator refrigerator = new Refrigerator(powerConsumption, weight, freezerCapacity, overalCapacity, height, width);
+
+		Appliance appliance = refrigerator;
+
 
 		return appliance;
 	}

@@ -1,24 +1,32 @@
 package by.epamtc.jwdmay2020.dziadkouskaya.task05.dao.factory;
 
+
 import by.epamtc.jwdmay2020.dziadkouskaya.task05.entity.Appliance;
+import by.epamtc.jwdmay2020.dziadkouskaya.task05.entity.VacuumCleaner;
 
 public class VacuumCleanerCommand implements ApplienceCommand {
 
 	public Appliance createApplience(String[] features) {
 
-		String productName = features[0];
+		int powerConsumption = Integer.parseInt(features[2]);
 
-		ApplienceFactory factory = ApplienceFactory.getInstance();
-		Appliance appliance = factory.getCleaner();
+		String filterType = features[4];
 
-		appliance.setApplienceName(features[0]);
+		String bagType = features[6];
 
+		String wandType = features[8];
 
-		for (int i = 1; i < features.length; i += 2) {
-			appliance.getFeatureMap().put(features[i], features[i + 1]);
+		int motorSpeedRegulation = Integer.parseInt(features[10]);
 
-		}
+		int cleaningWidth = Integer.parseInt(features[12]);
 
+		VacuumCleaner cleaner = new VacuumCleaner(powerConsumption, filterType, bagType, wandType, motorSpeedRegulation,
+				cleaningWidth);
+
+		Appliance appliance = cleaner;
+		
+		System.out.println("Vac" + cleaner);
+		
 		return appliance;
 	}
 
